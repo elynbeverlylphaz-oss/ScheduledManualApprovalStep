@@ -1,0 +1,19 @@
+version: 2.1
+jobs:
+  array_sum:
+    docker:
+      - image: cimg/base:current
+    steps:
+      - run:
+          name: sum array
+          command: |
+            nums=(10 20 30)
+            total=0
+            for n in "${nums[@]}"; do
+              total=$((total + n))
+            done
+            echo "sum=$total"
+workflows:
+  main:
+    jobs:
+      - array_sum
